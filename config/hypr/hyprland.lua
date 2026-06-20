@@ -181,6 +181,7 @@ hl.bind(M .. " + SHIFT + R", hl.dsp.exec_cmd("hyprctl reload"))
 hl.bind(M .. " + CONTROL + Escape", hl.dsp.exec_cmd("hyprlock"))
 hl.bind(M .. " + SHIFT + Q", hl.dsp.window.close())
 hl.bind("CONTROL + SHIFT + Escape", hl.dsp.exec_cmd(terminal .. " -e btop"))
+hl.bind(M .. " + slash", hl.dsp.exec_cmd("kitty --title atajos -e less -R $HOME/.local/share/nuckmouse/atajos.md"))
 
 -- Workspaces 1-10
 for i = 1, 9 do
@@ -256,3 +257,4 @@ end)
 hl.window_rule({ name = "yazi-tui",      match = { title = "yazi" },      float = true, size = "900 700" })
 hl.window_rule({ name = "bluetuith-tui", match = { title = "bluetuith" }, float = true, size = "800 600" })
 hl.window_rule({ name = "ncpamixer-tui", match = { title = "ncpamixer" }, float = true, size = "800 600" })
+hl.window_rule({ name = "atajos-tui",    match = { title = "atajos" },    float = true, size = "900 700" })

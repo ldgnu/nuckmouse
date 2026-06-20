@@ -34,6 +34,7 @@
 | `Super+Shift+R` | Reiniciar Hyprland |
 | `Super+Ctrl+Esc` | Bloquear pantalla |
 | `Ctrl+Shift+Esc` | Monitor del sistema (btop) |
+| `Super+/` | Ver todos los atajos (ventana flotante) |
 
 ## 🔊 Multimedia
 
