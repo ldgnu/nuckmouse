@@ -154,10 +154,10 @@ hl.bind(M .. " + SHIFT + up",    hl.dsp.window.move({ direction = "up" }))
 hl.bind(M .. " + SHIFT + down",  hl.dsp.window.move({ direction = "down" }))
 
 -- Resize
-hl.bind(M .. " + CTRL + H", hl.dsp.window.resize({ x = -10, y = 0, relative = true }))
-hl.bind(M .. " + CTRL + J", hl.dsp.window.resize({ x = 0, y = 10, relative = true }))
-hl.bind(M .. " + CTRL + K", hl.dsp.window.resize({ x = 0, y = -10, relative = true }))
-hl.bind(M .. " + CTRL + L", hl.dsp.window.resize({ x = 10, y = 0, relative = true }))
+hl.bind(M .. " + CTRL + H", hl.dsp.window.resize({ x = -10, y = 0, relative = true }), { repeating = true })
+hl.bind(M .. " + CTRL + J", hl.dsp.window.resize({ x = 0, y = 10, relative = true }), { repeating = true })
+hl.bind(M .. " + CTRL + K", hl.dsp.window.resize({ x = 0, y = -10, relative = true }), { repeating = true })
+hl.bind(M .. " + CTRL + L", hl.dsp.window.resize({ x = 10, y = 0, relative = true }), { repeating = true })
 
 -- Layout
 hl.bind(M .. " + F", hl.dsp.window.fullscreen())
