@@ -1,0 +1,13 @@
+#!/usr/bin/bash
+# atajos — Muestra los atajos de teclado del sistema
+# Usa less para navegar (j/k, / para buscar, q para salir)
+
+dir="$(dirname "$(readlink -f "$0")")"
+
+if command -v glow &>/dev/null; then
+  glow "$dir/../atajos.md" | less -R
+elif command -v bat &>/dev/null; then
+  bat -p --theme=Dracula "$dir/../atajos.md" | less -R
+else
+  less -R "$dir/../atajos.md"
+fi

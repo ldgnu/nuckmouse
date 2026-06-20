@@ -1,0 +1,34 @@
+[manager]
+ratio = [1, 4, 3]
+sort_by = "natural"
+sort_dir_first = true
+
+[preview]
+max_width = 600
+max_height = 900
+
+[opener]
+
+archive = [
+  { run = '7z x "$@"', block = true, for = "linux" },
+]
+
+image = [
+  { run = 'imv "$@"', block = false, for = "linux" },
+]
+
+pdf = [
+  { run = 'zathura "$@"', block = false, for = "linux" },
+]
+
+text = [
+  { run = 'nvim "$@"', block = true, for = "linux" },
+]
+
+video = [
+  { run = 'mpv "$@"', block = false, for = "linux" },
+]
+
+audio = [
+  { run = 'mpv "$@"', block = false, for = "linux" },
+]

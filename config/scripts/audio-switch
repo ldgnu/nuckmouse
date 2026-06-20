@@ -1,0 +1,34 @@
+#!/usr/bin/bash
+# audio-switch — Cambiar salida de audio, volumen, mute con wofi
+
+action=$(printf "🔊 Cambiar salida de audio\n🔉 Subir volumen\n🔊 Bajar volumen\n🔇 Silenciar / Activar\n📊 Ver nivel actual" | wofi --dmenu -p "Audio" --width 450 --height 280 --cache-file /dev/null)
+
+case "$action" in
+  *"Cambiar salida"*)
+    sinks=$(pactl list sinks | awk '
+      /^Sink #/{num=$2; gsub(/#/,"",num)}
+      /Description:/{desc=substr($0,index($0,$2))}
+      /State:/ && num!="" {printf "%s\t%s\n", num, desc; num=""; desc=""}
+    ')
+    sel=$(echo "$sinks" | wofi --dmenu -p "Seleccionar salida" --width 700 --height 200)
+    [ -n "$sel" ] && pactl set-default-sink "$(echo "$sel" | cut -f1)" && \
+      notify-send "🔊 Audio" "$(echo "$sel" | cut -f2-)"
+    ;;
+  *"Subir"*)
+    pamixer -i 5 && notify-send "🔉 Volumen $(pamixer --get-volume)%"
+    ;;
+  *"Bajar"*)
+    pamixer -d 5 && notify-send "🔊 Volumen $(pamixer --get-volume)%"
+    ;;
+  *"Silenciar"*)
+    pamixer -t
+    pamixer --get-mute && notify-send "🔇 Silenciado" || notify-send "🔊 Sonido activado"
+    ;;
+  *"Nivel"*)
+    default=$(pactl info | awk -F': ' '/Default Sink/{print $2}')
+    desc=$(pactl list sinks | awk -v d="$default" '/^Sink #/{n=$2;gsub(/#/,"",n)} n==d && /Description:/{print substr($0,index($0,$2)); exit}')
+    vol=$(pamixer --get-volume)
+    pamixer --get-mute && icon="🔇" || icon="🔊"
+    notify-send "$icon $desc" "Volumen: $vol%"
+    ;;
+esac
