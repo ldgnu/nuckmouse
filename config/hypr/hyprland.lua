@@ -173,7 +173,7 @@ hl.bind(M .. " + SHIFT + space", hl.dsp.window.float({ action = "toggle" }))
 
 -- Focus monitor
 hl.bind(M .. " + A",       hl.dsp.focus({ monitor = "left" }))
-hl.bind(M .. " + SHIFT + A", hl.dsp.focus({ monitor = "right" }))
+hl.bind(M .. " + SHIFT + A", hl.dsp.exec_cmd("kitty --title atajos -e less -R $HOME/.local/share/nuckmouse/atajos.md"))
 
 -- System
 hl.bind(M .. " + SHIFT + C", hl.dsp.exec_cmd("hyprctl reload"))
