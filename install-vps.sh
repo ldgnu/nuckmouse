@@ -25,9 +25,12 @@ if ! command -v yazi &>/dev/null; then
 fi
 
 # Configs
-mkdir -p ~/.config/nvim/lua/plugins ~/.config/yazi
+mkdir -p ~/.config/nvim/lua/plugins ~/.config/yazi ~/.local/bin ~/.local/share/nuckmouse
 cp -rv config/nvim/* ~/.config/nvim/
 cp -v config/yazi/yazi.toml ~/.config/yazi/
+cp -v bin/atajos ~/.local/bin/
+cp -v atajos.md ~/.local/share/nuckmouse/
+chmod +x ~/.local/bin/atajos
 
 echo ""
 echo "✅ VPS listo. Recomendado:"

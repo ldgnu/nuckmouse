@@ -1,13 +1,22 @@
 #!/usr/bin/bash
-# atajos — Muestra los atajos de teclado del sistema
-# Usa less para navegar (j/k, / para buscar, q para salir)
 
-dir="$(dirname "$(readlink -f "$0")")"
+# Buscar atajos.md en varios lugares
+for dir in "$HOME/.local/share/nuckmouse" "$HOME/nuckmouse" "$(dirname "$(readlink -f "$0")")/.." "$PWD"; do
+  if [ -f "$dir/atajos.md" ]; then
+    file="$dir/atajos.md"
+    break
+  fi
+done
+
+if [ -z "$file" ]; then
+  echo "No encuentra atajos.md. Copialo a ~/.local/share/nuckmouse/"
+  exit 1
+fi
 
 if command -v glow &>/dev/null; then
-  glow "$dir/../atajos.md" | less -R
+  glow "$file" | less -R
 elif command -v bat &>/dev/null; then
-  bat -p --theme=Dracula "$dir/../atajos.md" | less -R
+  bat -p --theme=Dracula "$file" | less -R
 else
-  less -R "$dir/../atajos.md"
+  less -R "$file"
 fi

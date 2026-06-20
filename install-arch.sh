@@ -20,6 +20,8 @@ cp -v config/scripts/audio-switch ~/.local/bin/
 
 # Instalar atajos command
 cp -v bin/atajos ~/.local/bin/
+mkdir -p ~/.local/share/nuckmouse
+cp -v atajos.md ~/.local/share/nuckmouse/
 chmod +x ~/.local/bin/atajos ~/.local/bin/audio-switch
 
 echo ""

@@ -4,7 +4,7 @@
 
 No me anda el mouse, asi que arme este setup para vivir solo con el teclado. Hyprland, kitty, neovim, yazi y un monton de TUIs.
 
-Funciona en Arch y Ubuntu 24.04. Tambien hay un script para VPS si solo queres las tools de terminal.
+Funciona en **Arch**, **Fedora 40+** y **Ubuntu 24.04**. Tambien hay un script para **VPS** si solo queres las tools de terminal sin GUI.
 
 ## Que incluye
 
@@ -25,15 +25,23 @@ Funciona en Arch y Ubuntu 24.04. Tambien hay un script para VPS si solo queres l
 
 ### Arch
 ```bash
-git clone https://github.com/TU_USER/nuckmouse.git
+git clone https://github.com/ldgnu/nuckmouse.git
 cd nuckmouse
 chmod +x install-arch.sh
 ./install-arch.sh
 ```
 
+### Fedora 40+
+```bash
+git clone https://github.com/ldgnu/nuckmouse.git
+cd nuckmouse
+chmod +x install-fedora.sh
+./install-fedora.sh
+```
+
 ### Ubuntu 24.04
 ```bash
-git clone https://github.com/TU_USER/nuckmouse.git
+git clone https://github.com/ldgnu/nuckmouse.git
 cd nuckmouse
 chmod +x install-ubuntu.sh
 ./install-ubuntu.sh
@@ -41,7 +49,7 @@ chmod +x install-ubuntu.sh
 
 ### VPS (solo terminal, sin GUI)
 ```bash
-git clone https://github.com/TU_USER/nuckmouse.git
+git clone https://github.com/ldgnu/nuckmouse.git
 cd nuckmouse
 chmod +x install-vps.sh
 ./install-vps.sh
@@ -51,7 +59,7 @@ chmod +x install-vps.sh
 
 1. Ajusta tus monitores en `~/.config/hypr/hyprland.lua`
 2. Abri `nvim` asi instala los plugins solo
-3. Agrega `~/.local/bin` a tu PATH si no esta
+3. Agrega `~/.local/bin` (y `~/.cargo/bin` si usaste cargo) a tu PATH
 4. Corre `atajos` para ver todos los shortcuts
 
 ## Shortcuts
@@ -86,8 +94,8 @@ Toda la config esta en `~/.config/`:
 ## Cosas que no estan aca (por privacidad)
 
 Saque lo personal:
-- Tus propios paths de proyectos
-- Tus dispositivos de audio exactos
+- Tus paths de proyectos
+- Tus dispositivos de audio exactos (hardware IDs)
 - Tokens, API keys, passwords
 - Integraciones con OneDrive, etc.
 
@@ -116,6 +124,16 @@ nmtui                        # menu interactivo
 nmcli device wifi list       # ver redes
 nmcli device wifi connect SSID password CLAVE
 ```
+
+## Notas por distro
+
+| Paquete | Arch | Fedora | Ubuntu |
+|---------|------|--------|--------|
+| Hyprland | pacman | dnf | manual/PPA |
+| yazi | pacman | cargo | cargo |
+| bluetuith | pacman | manual | manual |
+| ncpamixer | pacman | manual | manual |
+| autotiling | pacman | pip | pip |
 
 ## Por que nuckmouse?
 

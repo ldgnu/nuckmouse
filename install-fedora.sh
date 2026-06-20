@@ -1,45 +1,36 @@
 #!/usr/bin/bash
 set -euo pipefail
 
-echo "🔧 Instalando nuckmouse en Ubuntu 24.04..."
+echo "🔧 Instalando nuckmouse en Fedora 40+..."
 
-sudo apt update
-
-# Dependencias principales (disponibles en repos)
-sudo apt install -y \
-  kitty neovim zathura zathura-pdf-mupdf mpv \
+# Dependencias disponibles en repos oficiales
+sudo dnf install -y \
+  hyprland kitty neovim imv zathura zathura-pdf-mupdf mpv \
   pamixer playerctl brightnessctl \
-  wofi grim slurp wl-clipboard btop p7zip-full \
-  network-manager imv
+  wofi grim slurp wl-clipboard btop \
+  p7zip p7zip-plugins \
+  NetworkManager-tui \
+  cargo rustc python3-pip
 
-# Hyprland
-if ! command -v hyprctl &>/dev/null; then
-  echo "Instalando Hyprland..."
-  sudo apt install -y hyprland 2>/dev/null || {
-    echo "Hyprland no disponible en los repos de Ubuntu 24.04."
-    echo "Instalalo manual: https://github.com/hyprwm/Hyprland/wiki/Installation"
-    echo "O usa https://ppa.launchpadcontent.net/savoury1/hyprland/ubuntu"
-  }
-fi
-
-# yazi (no esta en repos, va con cargo)
+# yazi (no esta en repos de Fedora, va con cargo)
 if ! command -v yazi &>/dev/null; then
   echo "Instalando yazi desde cargo..."
-  sudo apt install -y cargo rustc
   cargo install --locked yazi-fm
   echo "Agrega ~/.cargo/bin a tu PATH"
 fi
 
-# autotiling (python)
+# autotiling
 if ! command -v autotiling &>/dev/null; then
-  sudo apt install -y python3-pip
   pip3 install --user autotiling
 fi
 
-# bluetuith y ncpamixer no estan en Ubuntu.
-# Opcionales: sld sld
-#   bluetuith: https://github.com/darkhz/bluetuith
+# bluetuith y ncpamixer no estan en Fedora.
+# Opcionales:
+#   bluetuith: https://github.com/darkhz/bluetuith (go install)
 #   ncpamixer: https://github.com/nickclyde/ncpamixer
+
+# ncpamixer alternativa: pulsemixer
+sudo dnf install -y pulsemixer || true
 
 # Configs
 mkdir -p ~/.config/hypr ~/.config/yazi ~/.config/kitty ~/.config/nvim/lua/plugins ~/.local/bin ~/.local/share/nuckmouse
