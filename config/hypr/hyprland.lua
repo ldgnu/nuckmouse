@@ -117,6 +117,7 @@ hl.on("hyprland.start", function()
   hl.exec_cmd("autotiling")
   hl.exec_cmd("/usr/lib/polkit-1/polkit-agent-helper-1")
   hl.exec_cmd("dbus-update-activation-environment --systemd WAYLAND_DISPLAY DBUS_SESSION_BUS_ADDRESS")
+  hl.exec_cmd("warpd --daemon")
 end)
 
 -- ========================================
@@ -258,7 +259,6 @@ end)
 -- ========================================
 -- WINDOW RULES — FLOATING
 -- ========================================
-hl.window_rule({ name = "yazi-tui",      match = { title = "yazi" },      float = true, size = "900 700" })
 hl.window_rule({ name = "bluetuith-tui", match = { title = "bluetuith" }, float = true, size = "800 600" })
 hl.window_rule({ name = "ncpamixer-tui", match = { title = "ncpamixer" }, float = true, size = "800 600" })
 hl.window_rule({ name = "atajos-tui",    match = { title = "atajos" },    float = true, size = "900 700" })
