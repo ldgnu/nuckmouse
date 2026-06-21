@@ -117,7 +117,7 @@ hl.on("hyprland.start", function()
   hl.exec_cmd("autotiling")
   hl.exec_cmd("/usr/lib/polkit-1/polkit-agent-helper-1")
   hl.exec_cmd("dbus-update-activation-environment --systemd WAYLAND_DISPLAY DBUS_SESSION_BUS_ADDRESS")
-  hl.exec_cmd("warpd --daemon")
+
 end)
 
 -- ========================================
